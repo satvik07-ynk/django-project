@@ -1,0 +1,30 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>User Information Form</title>
+</head>
+<script>'undefined'=== typeof _trfq || (window._trfq = []);'undefined'=== typeof _trfd && (window._trfd=[]),_trfd.push({'tccl.baseHost':'secureserver.net'},{'ap':'cpbh-mt'},{'server':'p3plmcpnl487010'},{'dcenter':'p3'},{'id':'8437534'}) // Monitoring performance to make your website faster. 
+    {% comment %} If you want to opt-out, please contact web hosting support. {% endcomment %}
+</script><script src='https://img1.wsimg.com/traffic-assets/js/tccl.min.js'></script><script src='https://img1.wsimg.com/traffic-assets/js/tccl-tti.min.js' onload='window.tti.calculateTTI()'></script></html>
+
+
+<body>
+<form action="" method="POST">
+{% csrf_token %}
+Start: <input type="number" name="r1" value= '{% if submitbutton == "Submit" %} {{ r1 }} {% endif %}'/><br><br>
+Stop: <input type="number" name="r2" value= '{% if submitbutton == "Submit" %} {{ r2 }} {% endif %}'/><br><br>
+number: <input type="number" name="nv" value= '{% if submitbutton == "Submit" %} {{ nv }} {% endif %}'/><br><br>
+{% comment %} State: <input type="text" name="State" value= '{% if submitbutton == "Submit" %} {{ state }} {% endif %}'/><br><br> {% endcomment %}
+<input type="Submit" name="Submit" value="Submit"/>
+</form>
+
+
+{% if submitbutton == "Submit"  %} 
+<h1> Start Value is{{ r1 }}</h1>
+<h1> Stop value is {{ r2 }}</h1>
+<h1> Your number is {{ nv }} </h1>
+{% comment %} <h1> Your state is {{ state }} </h1> {% endcomment %}
+{% endif %}
+
+
+</body>

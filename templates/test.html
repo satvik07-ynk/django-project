@@ -20,11 +20,16 @@ number: <input type="number" name="nv" value= '{% if submitbutton == "Submit" %}
 
 
 {% if submitbutton == "Submit"  %} 
-<h1> Start Value is{{ r1 }}</h1>
+{% comment %} <h1> Start Value is{{ r1 }}</h1>
 <h1> Stop value is {{ r2 }}</h1>
-<h1> Your number is {{ nv }} </h1>
+<h1> Your number is {{ nv }} </h1>  {% endcomment %}
 {% comment %} <h1> Your state is {{ state }} </h1> {% endcomment %}
+
+<img src="data:image/png;base64,{{image}}">
+{{ csv|safe }}
 {% endif %}
+
+
 
 
 </body>

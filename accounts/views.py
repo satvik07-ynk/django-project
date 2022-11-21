@@ -43,7 +43,7 @@ def test(request):
     #     st2 = int (r2)
     #     st3 = int (nv)
     val = abs(end_value) - abs(start_value)
-    stepsize = val/no_step
+    stepsize = 1
     print(start_value)
     # print(stepsize)
     vals = {}  # Empty dictionary for values

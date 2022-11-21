@@ -1,0 +1,65 @@
+{% extends 'measurements/base.html' %}
+
+
+{% block content %}
+    <script>
+    function updateTextInput(val){
+        document.getElementById('rangeText').value=val;
+    }
+
+    function updateRangeInput(val){
+        document.getElementById('rangeSlider').value=val;
+    }
+    </script>
+
+    <form method="post" action="{% url 'run_transient_measurement' %}">
+    {% csrf_token %}
+
+    <div class="card">
+        <div class="card-body">
+        <h1>Welcome to Transient Analaysis Setup</h1>
+        </div>
+    </div>
+    <br/>
+
+    <div class="card">
+        <div class="card-body">
+        <select name="equipments" class="form-select" aria-label="Default select example" hx-post="{% url 'hx_parameters'%}" hx-target="#parameters" hx-indicator=".htmx-indicator">
+            <option selected>Select Instrument From The list</option>
+            {% for equipment in equipments_list %}
+            <option value="{{ equipment.id }}">{{ equipment }}</option>
+            {% endfor %}
+        </select>
+        </div>
+    </div>
+    <br/>
+
+    <div class="card">
+        <div class="card-body">
+        <select name='parameter' class="form-select" aria-label="Default select example" id="parameters">
+            <option selected>Select Y-Axis value</option>
+            {% for parameter in list_of_parameters %}
+            <option value="{{ parameters.id }}">{{ parameter }}</option>
+            {% endfor %}
+        </select>
+        </div>
+    </div>
+    <br/>
+
+    <div class="card">
+        <div class="card-body">
+            <label for="customRange3" class="form-label">Select the Frequency of Sampling (Higher sampling rate may lead to error)</label>
+            <input name='range_value' type="range" id="rangeSlider" class="form-range" min="1" max="100" value="50" step="0.5" id="slider_value" onchange="updateTextInput(this.value)">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">Current Value</span>
+                </div>
+                <input type="text" id="rangeText" class="form-control" placeholder="50" aria-label="Username" aria-describedby="basic-addon1" onchange="updateRangeInput(this.value)">
+            </div>
+        </div>
+    </div>
+    <br/>
+    <button type="submit" class="btn btn-primary">Run Measurement</button>
+
+    </form>
+{% endblock %}

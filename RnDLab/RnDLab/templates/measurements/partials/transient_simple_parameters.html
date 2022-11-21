@@ -1,0 +1,8 @@
+<option selected>Select Y-Axis value</option>
+{% if equipment != 'Select Instrument From The list' %}
+            {% for parameter in list_of_parameters %}
+            <option value="{{ parameter.id }}">{{ parameter.parameter }}</option>
+            {% endfor %}
+{% else %}
+    <option value="0"> {{ list_of_parameters  }}</option>
+{% endif %}
